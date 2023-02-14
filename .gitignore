@@ -1,0 +1,26 @@
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Idea
+.DS_Store
+.idea/
+*.iml
+
+# Terraform
+.terraform/
+.terragrunt-cache
+*.tfstate
+*.backup
+
+# Python
+*.pyc
+
+# ViM
+*.swp
+
+venv/
