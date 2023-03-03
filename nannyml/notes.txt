@@ -1,0 +1,15 @@
+ECR
+
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 125667932402.dkr.ecr.us-east-1.amazonaws.com
+
+docker build -t kop/nannyml .
+docker tag kop/nannyml:latest 125667932402.dkr.ecr.us-east-1.amazonaws.com/kop/nannyml:latest
+docker push 125667932402.dkr.ecr.us-east-1.amazonaws.com/kop/nannyml:latest
+
+
+Local
+
+docker build -t app-1 .
+docker run -p 9000:8080 app-1:latest 
+docker run -v ~/.aws-lambda-rie:/aws-lambda -p 9000:8080 --entrypoint /aws-lambda/aws-lambda-rie app-1:latest /usr/local/bin/python -m awslambdaric app.handler
+curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{}'
